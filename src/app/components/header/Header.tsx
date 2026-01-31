@@ -47,11 +47,12 @@ const Header = () => {
     <Box
       component="header"
       px={2.5}
-      py={2.5}
+      // py={2.5}
       display={"flex"}
       justifyContent={"space-between"}
       alignItems={"center"}
       bgcolor={"#1C1C1B"}
+      sx={{ height: '10vh' }}
     >
       <Typography variant="h5" fontWeight={"bold"} color="#FAFAF9">
         Just Chat

@@ -1,11 +1,11 @@
+import { Box } from "@mui/material";
 import { Chatroom } from "../components";
 
 const ChatroomPage = () => {
   return (
-    <div>
-      Chatroom page
+    <Box component={"main"}>
       <Chatroom />
-    </div>
+    </Box>
   );
 };
 

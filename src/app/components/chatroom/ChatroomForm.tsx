@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 
 type ChatroomFormProps = {
   value: string | number;
@@ -8,7 +8,11 @@ type ChatroomFormProps = {
 
 const ChatroomForm = ({ value, onChange, onSubmit }: ChatroomFormProps) => {
   return (
-    <form onSubmit={(e) => onSubmit(e)}>
+    <Box
+      component={"form"}
+      onSubmit={(e) => onSubmit(e)}
+      sx={{ border: "2px solid hotpink" }}
+    >
       <TextField
         variant="outlined"
         label="Message"
@@ -18,7 +22,7 @@ const ChatroomForm = ({ value, onChange, onSubmit }: ChatroomFormProps) => {
       <Button variant="contained" type="submit">
         🕊️
       </Button>
-    </form>
+    </Box>
   );
 };
 
