@@ -51,7 +51,7 @@ const Header = () => {
       display={"flex"}
       justifyContent={"space-between"}
       alignItems={"center"}
-      bgcolor={"#1C1C1B"}
+      bgcolor={"#232321"}
       sx={{ height: '10vh' }}
     >
       <Typography variant="h5" fontWeight={"bold"} color="#FAFAF9">

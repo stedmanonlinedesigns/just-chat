@@ -1,7 +1,6 @@
-import React from "react";
 import { auth } from "@/app/utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Typography, Avatar } from "@mui/material";
+import { Box, Typography, Avatar } from "@mui/material";
 
 type ChatroomMessageProps = {
   message: {
@@ -15,14 +14,32 @@ type ChatroomMessageProps = {
 const ChatroomMessage = ({ message }: ChatroomMessageProps) => {
   const [user] = useAuthState(auth);
   const isUsersMessage = message.user_id === user?.uid;
+  console.log(message);
 
   return (
-    <div>
-      <Avatar alt={"User image"} src={message.photoURL} />
-      <Typography sx={{ color: isUsersMessage ? "green" : "red" }}>
-        {message.text}
-      </Typography>
-    </div>
+    <Box
+      component={"li"}
+      display={"flex"}
+      justifyContent={isUsersMessage ? "end" : "start"}
+      alignItems={"center"}
+      gap={2}
+    >
+      <Box order={isUsersMessage ? 2 : 1}>
+        <Avatar alt={"User image"} src={message.photoURL} />
+      </Box>
+
+      <Box
+        py={0.5}
+        px={2}
+        order={isUsersMessage ? 1 : 2}
+        bgcolor={isUsersMessage ? "#1565C0" : "#EFEFED"}
+        borderRadius={100}
+      >
+        <Typography color={isUsersMessage ? "#FAFAF9" : "#1C1C1B"}>
+          {message.text}
+        </Typography>
+      </Box>
+    </Box>
   );
 };
 

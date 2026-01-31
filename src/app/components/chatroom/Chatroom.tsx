@@ -59,6 +59,7 @@ const Chatroom = () => {
       component={"section"}
       display={"flex"}
       flexDirection={"column"}
+      // bgcolor={'#FFF3E0'}
       sx={{ minHeight: "90vh" }}
     >
       {loading ? (
