@@ -12,6 +12,5 @@ export const app = initializeApp({
 
 export const auth = getAuth(app)
 export const googleProvider = new GoogleAuthProvider()
-export const signinPopup = signInWithPopup 
+export const signinPopup = signInWithPopup
 export const signout = signOut
-// export const signInPopup = signInWithPopup(auth, googleProvider)
