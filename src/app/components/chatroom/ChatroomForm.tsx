@@ -16,7 +16,7 @@ const ChatroomForm = ({ value, onChange, onSubmit }: ChatroomFormProps) => {
         onChange={(e) => onChange(`${e.target.value}`)}
       />
       <Button variant="contained" type="submit">
-        Send
+        🕊️
       </Button>
     </form>
   );
