@@ -3,12 +3,15 @@ import { getFirestore, collection } from "firebase/firestore";
 import { app } from "@/app/utils/firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import ChatroomMessage from "./ChatroomMessage";
+import ChatroomForm from "./ChatroomForm";
 
 const Chatroom = () => {
   const db = getFirestore(app);
   const messagesCollection = collection(db, "messages");
   // TODO: See what loading can be used for
   const [messages, loading, error] = useCollectionData(messagesCollection);
+  // TODO: might could use zustand for this
+  const [chatMessageValue, setChatMessageValue] = React.useState("");
 
   const messagesList = messages?.map((message) => ({
     user_id: message.user_id,
@@ -16,7 +19,6 @@ const Chatroom = () => {
     photoURL: message.photoURL,
     text: message.text,
   }));
-  // console.log(111, loading);
 
   // TODO: use uuid to create new messages
   return (
@@ -28,6 +30,7 @@ const Chatroom = () => {
       ) : (
         <p>Loading...</p>
       )}
+      <ChatroomForm value={chatMessageValue} onChange={setChatMessageValue} />
     </div>
   );
 };
