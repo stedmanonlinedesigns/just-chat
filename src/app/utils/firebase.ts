@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 
-const app = initializeApp({
+export const app = initializeApp({
   apiKey: "AIzaSyArdDJpCx0nSSRFX5ydD09BWjTmPzK47-o",
   authDomain: "just-chat-19338.firebaseapp.com",
   projectId: "just-chat-19338",

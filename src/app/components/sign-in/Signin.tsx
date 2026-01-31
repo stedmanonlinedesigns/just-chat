@@ -10,8 +10,8 @@ const Signin = () => {
         // const credential = GoogleAuthProvider.credentialFromResult(result);
         // const token = credential?.accessToken;
 
-        const user = result.user;
-        console.log(user);
+        // const user = result.user;
+        // console.log(user);
       })
       .catch((error) => {
         const errorCode = error.code;
