@@ -14,7 +14,6 @@ type ChatroomMessageProps = {
 const ChatroomMessage = ({ message }: ChatroomMessageProps) => {
   const [user] = useAuthState(auth);
   const isUsersMessage = message.user_id === user?.uid;
-  console.log(message);
 
   return (
     <Box
