@@ -53,20 +53,21 @@ const Header = () => {
       justifyContent={"space-between"}
       alignItems={"center"}
       bgcolor={"#232321"}
-      sx={{ height: "10vh" }}
+      sx={{ height: "8vh", flexShrink: 0 }}
     >
       <Typography variant="h5" fontWeight={"bold"} color="#FAFAF9">
         Buddy Chat
       </Typography>
-      {!user ? (
-        <Button variant="outlined" onClick={handleSigninClick}>
-          Sign in
-        </Button>
-      ) : (
-        <Button variant="outlined" onClick={handleSignoutClick}>
-          Sign out
-        </Button>
-      )}
+      <Button
+        variant="outlined"
+        onClick={!user ? handleSigninClick : handleSignoutClick}
+        sx={{
+          borderColor: "#FAFAF9",
+          color: "#FAFAF9",
+        }}
+      >
+        {!user ? "Sign in" : "Sign out"}
+      </Button>
     </Box>
   );
 };
