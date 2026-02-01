@@ -29,6 +29,8 @@ const Chatroom = () => {
   // TODO: might could use zustand for this
   const [chatMessageValue, setChatMessageValue] = React.useState("");
 
+  if (!messages) return (<Box><Typography>There are no messagessssss.</Typography></Box>)
+
   const messagesList = messages?.map((message) => ({
     user_id: message.user_id,
     created_at: message.created_at,

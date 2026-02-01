@@ -4,7 +4,7 @@ import { auth, signinPopup, googleProvider } from "../../utils/firebase";
 const Signin = () => {
   const handleSigninClick = () => {
     signinPopup(auth, googleProvider)
-      .then((result) => {
+      .then(() => {
         // const credential = GoogleAuthProvider.credentialFromResult(result);
         // const token = credential?.accessToken;
         // const user = result.user;
