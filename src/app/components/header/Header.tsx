@@ -55,7 +55,7 @@ const Header = () => {
       sx={{ height: '10vh' }}
     >
       <Typography variant="h5" fontWeight={"bold"} color="#FAFAF9">
-        Just Chat
+        Buddy Chat
       </Typography>
       {!user ? (
         <Button variant="outlined" onClick={handleSigninClick}>

@@ -32,12 +32,16 @@ const ChatroomForm = ({ value, onChange, onSubmit }: ChatroomFormProps) => {
             borderBottomRightRadius: "0px",
             "& fieldset": {
               borderColor: "#5C5C59",
+              borderRightWidth: '0px',
             },
             "&:hover fieldset": {
               borderColor: "#6B6B68",
+              borderRightWidth: '0px',
             },
             "&.Mui-focused fieldset": {
               borderColor: "#797974",
+              borderWidth: '1px',
+              borderRightWidth: '0px',
             },
           },
           // "& .MuiInputLabel-root": {
