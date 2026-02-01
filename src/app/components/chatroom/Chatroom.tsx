@@ -17,7 +17,6 @@ import ChatroomDisplay from "./ChatroomDisplay";
 import ChatroomForm from "./ChatroomForm";
 
 const Chatroom = () => {
-  // const dummy = React.useRef(null);
   const [user] = useAuthState(auth);
   const db = getFirestore(app);
   const messagesCollection = collection(db, "messages");
@@ -29,7 +28,12 @@ const Chatroom = () => {
   // TODO: might could use zustand for this
   const [chatMessageValue, setChatMessageValue] = React.useState("");
 
-  if (!messages) return (<Box><Typography>There are no messagessssss.</Typography></Box>)
+  if (!messages)
+    return (
+      <Box>
+        <Typography>There are no messagessssss.</Typography>
+      </Box>
+    );
 
   const messagesList = messages?.map((message) => ({
     user_id: message.user_id,
@@ -64,7 +68,7 @@ const Chatroom = () => {
       display={"flex"}
       flexDirection={"column"}
       // bgcolor={'#FFF3E0'}
-      sx={{ minHeight: "90vh" }}
+      sx={{ height: "100%", overflow: "hidden" }}
     >
       {loading ? (
         <Typography>Loading...</Typography>

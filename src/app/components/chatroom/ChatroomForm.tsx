@@ -16,6 +16,9 @@ const ChatroomForm = ({ value, onChange, onSubmit }: ChatroomFormProps) => {
       display={"flex"}
       justifyContent={"space-between"}
       bgcolor={"#1C1C1B"}
+      height={"10vh"}
+      flexShrink={0}
+      alignItems={"center"}
       //TODO: Fix this
       // @ts-expect-error Expected 0 arguments, but got 1.
       onSubmit={(e) => onSubmit(e)}
