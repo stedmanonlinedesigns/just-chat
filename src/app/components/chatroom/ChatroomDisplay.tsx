@@ -2,8 +2,15 @@ import React from "react";
 import { Box } from "@mui/material";
 import ChatroomMessage from "./ChatroomMessage";
 
-type ChatroomDisplayProps = {
-  messages: any;
+type Message = {
+  user_id: string;
+  created_at: string;
+  photoURL: string;
+  text: string;
+};
+
+export type ChatroomDisplayProps = {
+  messages: Message[];
 };
 
 const ChatroomDisplay = ({ messages }: ChatroomDisplayProps) => {
