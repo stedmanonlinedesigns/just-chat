@@ -1,18 +1,22 @@
 "use client";
+import React from "react";
 import { auth } from "./utils/firebase";
-import { Chatroom, Signin } from "./components";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Header } from "./components";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
+  const router = useRouter();
 
-  return (
-    <div>
-      <Header />
-      <main>
-        <section>{user ? <Chatroom /> : <Signin />}</section>
-      </main>
-    </div>
-  );
+  React.useEffect(() => {
+    if (loading) return;
+
+    if (user) {
+      router.replace("/chatroom");
+    } else {
+      router.replace("sign-in");
+    }
+  }, [user, loading, router]);
+
+  return null;
 }

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { auth } from "@/app/utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -11,16 +12,20 @@ import {
 } from "firebase/firestore";
 import { app } from "@/app/utils/firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import ChatroomMessage from "./ChatroomMessage";
+import { Box, Typography } from "@mui/material";
+import ChatroomDisplay from "./ChatroomDisplay";
 import ChatroomForm from "./ChatroomForm";
 
 const Chatroom = () => {
+  // const dummy = React.useRef(null);
   const [user] = useAuthState(auth);
   const db = getFirestore(app);
   const messagesCollection = collection(db, "messages");
   const messagesQuery = query(messagesCollection, orderBy("created_at", "asc"));
+
   // TODO: See what loading can be used for
   const [messages, loading, error] = useCollectionData(messagesQuery);
+
   // TODO: might could use zustand for this
   const [chatMessageValue, setChatMessageValue] = React.useState("");
 
@@ -50,20 +55,24 @@ const Chatroom = () => {
 
   // TODO: use uuid to create new messages
   return (
-    <div>
-      {!loading ? (
-        messagesList?.map((message, idx) => (
-          <ChatroomMessage key={idx} message={message} />
-        ))
+    <Box
+      component={"section"}
+      display={"flex"}
+      flexDirection={"column"}
+      // bgcolor={'#FFF3E0'}
+      sx={{ minHeight: "90vh" }}
+    >
+      {loading ? (
+        <Typography>Loading...</Typography>
       ) : (
-        <p>Loading...</p>
+        <ChatroomDisplay messages={messagesList} />
       )}
       <ChatroomForm
         value={chatMessageValue}
         onChange={setChatMessageValue}
         onSubmit={handleSubmit}
       />
-    </div>
+    </Box>
   );
 };
 

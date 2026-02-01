@@ -1,6 +1,4 @@
-import React from "react";
-// TODO: Would like to not have to import this here
-// import { GoogleAuthProvider } from "firebase/auth";
+"use client";
 import { auth, signinPopup, googleProvider } from "../../utils/firebase";
 
 const Signin = () => {
@@ -9,7 +7,6 @@ const Signin = () => {
       .then((result) => {
         // const credential = GoogleAuthProvider.credentialFromResult(result);
         // const token = credential?.accessToken;
-
         // const user = result.user;
         // console.log(user);
       })
