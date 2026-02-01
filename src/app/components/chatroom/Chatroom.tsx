@@ -23,8 +23,8 @@ const Chatroom = () => {
   const messagesCollection = collection(db, "messages");
   const messagesQuery = query(messagesCollection, orderBy("created_at", "asc"));
 
-  // TODO: See what loading can be used for
-  const [messages, loading, error] = useCollectionData(messagesQuery);
+  // TODO: See what loading and error can be used for
+  const [messages, loading] = useCollectionData(messagesQuery);
 
   // TODO: might could use zustand for this
   const [chatMessageValue, setChatMessageValue] = React.useState("");
@@ -36,6 +36,8 @@ const Chatroom = () => {
     text: message.text,
   }));
 
+  // TODO: fix this
+  // @ts-expect-error Parameter 'e' implicitly has an 'any' type.
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -69,7 +71,11 @@ const Chatroom = () => {
       )}
       <ChatroomForm
         value={chatMessageValue}
+        // TODO: Fix this
+        // @ts-expect-error Type 'Dispatch<SetStateAction<string>>' is not assignable to type '() => void'
         onChange={setChatMessageValue}
+        // TODO: Fix this
+        // @ts-expect-error Type '(e: any) => Promise<void>' is not assignable to type '() => Promise<void>
         onSubmit={handleSubmit}
       />
     </Box>

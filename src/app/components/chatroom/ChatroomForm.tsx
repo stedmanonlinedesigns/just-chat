@@ -16,6 +16,8 @@ const ChatroomForm = ({ value, onChange, onSubmit }: ChatroomFormProps) => {
       display={"flex"}
       justifyContent={"space-between"}
       bgcolor={"#1C1C1B"}
+      //TODO: Fix this
+      // @ts-expect-error Expected 0 arguments, but got 1.
       onSubmit={(e) => onSubmit(e)}
     >
       <TextField
@@ -24,6 +26,8 @@ const ChatroomForm = ({ value, onChange, onSubmit }: ChatroomFormProps) => {
         value={value}
         fullWidth
         size="medium"
+        // TODO: Fix this
+        // @ts-expect-error Expected 0 arguments, but got 1.
         onChange={(e) => onChange(`${e.target.value}`)}
         sx={{
           "& .MuiOutlinedInput-root": {
@@ -32,16 +36,16 @@ const ChatroomForm = ({ value, onChange, onSubmit }: ChatroomFormProps) => {
             borderBottomRightRadius: "0px",
             "& fieldset": {
               borderColor: "#5C5C59",
-              borderRightWidth: '0px',
+              borderRightWidth: "0px",
             },
             "&:hover fieldset": {
               borderColor: "#6B6B68",
-              borderRightWidth: '0px',
+              borderRightWidth: "0px",
             },
             "&.Mui-focused fieldset": {
               borderColor: "#797974",
-              borderWidth: '1px',
-              borderRightWidth: '0px',
+              borderWidth: "1px",
+              borderRightWidth: "0px",
             },
           },
           // "& .MuiInputLabel-root": {

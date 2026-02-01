@@ -25,7 +25,9 @@ const Header = () => {
 
   const handleSigninClick = () => {
     signinPopup(auth, googleProvider)
-      .then((result) => {
+      .then(() => {
+        // removed "result" from the argument
+        // console.log(result)
         // const credential = GoogleAuthProvider.credentialFromResult(result);
         // const token = credential?.accessToken;
 
@@ -52,7 +54,7 @@ const Header = () => {
       justifyContent={"space-between"}
       alignItems={"center"}
       bgcolor={"#232321"}
-      sx={{ height: '10vh' }}
+      sx={{ height: "10vh" }}
     >
       <Typography variant="h5" fontWeight={"bold"} color="#FAFAF9">
         Buddy Chat
