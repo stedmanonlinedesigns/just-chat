@@ -46,6 +46,10 @@ const Chatroom = () => {
   // @ts-expect-error Parameter 'e' implicitly has an 'any' type.
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setChatMessageValue("");
+
+    // TODO: probably could just await this instead of declaring a variable
     try {
       const docRef = await addDoc(messagesCollection, {
         created_at: serverTimestamp(),
@@ -53,9 +57,7 @@ const Chatroom = () => {
         user_id: user?.uid,
         text: chatMessageValue,
       });
-
       console.log("Document written with:", docRef.id);
-      setChatMessageValue("");
     } catch (error) {
       console.error("SOmething went wrong.", error);
     }
