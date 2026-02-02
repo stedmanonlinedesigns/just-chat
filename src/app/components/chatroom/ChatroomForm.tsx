@@ -31,6 +31,7 @@ const ChatroomForm = ({ value, onChange, onSubmit }: ChatroomFormProps) => {
         alignItems: "center",
         background: "#1C1C1B",
         flexShrink: 0,
+        height: "10dvh",
       }}
       //TODO: Fix this
       onSubmit={(e) => handleOnSubmit(e)}

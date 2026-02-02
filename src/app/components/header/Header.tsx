@@ -53,7 +53,7 @@ const Header = () => {
       justifyContent={"space-between"}
       alignItems={"center"}
       bgcolor={"#232321"}
-      sx={{ height: "8vh", flexShrink: 0 }}
+      sx={{ height: "8dvh", flexShrink: 0 }}
     >
       <Typography variant="h5" fontWeight={"bold"} color="#FAFAF9">
         Buddy Chat
