@@ -23,7 +23,7 @@ const ChatroomForm = ({ value, onChange, onSubmit }: ChatroomFormProps) => {
     <Box
       component={"form"}
       sx={{
-        pt: 2,
+        pt: 3,
         pb: 3,
         px: 2.5,
         display: "flex",
@@ -31,7 +31,8 @@ const ChatroomForm = ({ value, onChange, onSubmit }: ChatroomFormProps) => {
         alignItems: "center",
         background: "#1C1C1B",
         flexShrink: 0,
-        height: "10dvh",
+        minHeight: "80px",
+        // border: "2px solid orange",
       }}
       //TODO: Fix this
       onSubmit={(e) => handleOnSubmit(e)}
@@ -46,6 +47,8 @@ const ChatroomForm = ({ value, onChange, onSubmit }: ChatroomFormProps) => {
         // @ts-expect-error Expected 0 arguments, but got 1.
         onChange={(e) => onChange(`${e.target.value}`)}
         sx={{
+          // border: '2px solid green',
+
           "& .MuiOutlinedInput-root": {
             color: "#FAFAF9",
             borderTopRightRadius: "0px",
@@ -75,7 +78,12 @@ const ChatroomForm = ({ value, onChange, onSubmit }: ChatroomFormProps) => {
       <Button
         variant="contained"
         type="submit"
-        sx={{ borderTopLeftRadius: "0px", borderBottomLeftRadius: "0px" }}
+        sx={{
+          flexGrow: 1,
+          height: "100%",
+          borderTopLeftRadius: "0px",
+          borderBottomLeftRadius: "0px",
+        }}
       >
         <Box sx={{ transform: "rotate(45deg)" }}>
           <RocketIcon />
