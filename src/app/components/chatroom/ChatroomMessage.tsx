@@ -12,7 +12,6 @@ const ChatroomMessage = ({ message }: ChatroomMessageProps) => {
   const [user] = useAuthState(auth);
 
   // TODO: Fix this
-  // @ts-expect-error Property 'user_id' does not exist on type 'Message'
   const isUsersMessage = message.user_id === user?.uid;
 
   return (
@@ -24,8 +23,6 @@ const ChatroomMessage = ({ message }: ChatroomMessageProps) => {
       gap={1.5}
     >
       <Box order={isUsersMessage ? 2 : 1}>
-        {/** TODO: fix this */}
-        {/** @ts-expect-error Property 'photoURL' does not exist on type 'Message' */}
         <Avatar alt={"User image"} src={message.photoURL} />
       </Box>
 
@@ -49,15 +46,11 @@ const ChatroomMessage = ({ message }: ChatroomMessageProps) => {
             color={isUsersMessage ? "#FAFAF9" : "#1C1C1B"}
             sx={{ lineHeight: "1.3", wordWrap: "break-word" }}
           >
-            {/** TODO: fix this */}
-            {/** @ts-expect-error Property 'text' does not exist on type 'Message' */}
             {message.text}
           </Typography>
         </Box>
         <Box sx={{ px: 2 }}>
           <Typography variant="body2" sx={{ color: "#A8A8A3" }}>
-            {/** TODO: fix this */}
-            {/** @ts-expect-error Property 'created_at' does not exist on type 'Message' */}
             {formatRelative(message.created_at)}
             {/* {formatTime(message.created_at)} */}
           </Typography>
