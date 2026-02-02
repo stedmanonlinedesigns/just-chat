@@ -28,13 +28,18 @@ const ChatroomMessage = ({ message }: ChatroomMessageProps) => {
       </Box>
 
       <Box
-        py={0.5}
-        px={2}
+        maxWidth="70%"
+        display={"inline-block"}
         order={isUsersMessage ? 1 : 2}
         bgcolor={isUsersMessage ? "#1565C0" : "#EFEFED"}
-        borderRadius={100}
+        borderRadius={"18px"}
+        sx={{ padding: "8px 16px" }}
       >
-        <Typography color={isUsersMessage ? "#FAFAF9" : "#1C1C1B"}>
+        <Typography
+          variant="body1"
+          color={isUsersMessage ? "#FAFAF9" : "#1C1C1B"}
+          sx={{ lineHeight: "1.3", wordWrap: "break-word" }}
+        >
           {message.text}
         </Typography>
       </Box>

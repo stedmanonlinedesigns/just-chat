@@ -1,5 +1,6 @@
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import type { Metadata } from "next";
+import { Box } from "@mui/material";
 import { Header } from "./components";
 import "./globals.css";
 
@@ -16,8 +17,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
-        <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
+        <Box
+          sx={{
+            height: "100vh",
+            display: "flex",
+            flexDirection: "column",
+            overflow: "hidden",
+          }}
+        >
+          <Header />
+          <AppRouterCacheProvider>
+            <Box sx={{ flexGrow: 1, minHeight: 0, overflow: "hidden" }}>
+              {children}
+            </Box>
+          </AppRouterCacheProvider>
+        </Box>
       </body>
     </html>
   );

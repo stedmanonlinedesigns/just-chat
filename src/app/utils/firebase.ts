@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 
 export const app = initializeApp({
-  apiKey: "AIzaSyArdDJpCx0nSSRFX5ydD09BWjTmPzK47-o",
-  authDomain: "just-chat-19338.firebaseapp.com",
-  projectId: "just-chat-19338",
-  storageBucket: "just-chat-19338.firebasestorage.app",
-  messagingSenderId: "975313025536",
-  appId: "1:975313025536:web:722aacd15c94bea201f6e5",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 })
 
 export const auth = getAuth(app)

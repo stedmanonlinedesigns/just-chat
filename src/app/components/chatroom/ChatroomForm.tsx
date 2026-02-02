@@ -8,17 +8,32 @@ type ChatroomFormProps = {
 };
 
 const ChatroomForm = ({ value, onChange, onSubmit }: ChatroomFormProps) => {
+  // @ts-expect-error Parameter 'e' implicitly has an 'any' type.
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+
+    if (value === "") {
+      console.log("empty - cant send");
+    } else {
+      onSubmit();
+    }
+  };
+
   return (
     <Box
       component={"form"}
-      pb={3}
-      px={2.5}
-      display={"flex"}
-      justifyContent={"space-between"}
-      bgcolor={"#1C1C1B"}
+      sx={{
+        pt: 2,
+        pb: 3,
+        px: 2.5,
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        background: "#1C1C1B",
+        flexShrink: 0,
+      }}
       //TODO: Fix this
-      // @ts-expect-error Expected 0 arguments, but got 1.
-      onSubmit={(e) => onSubmit(e)}
+      onSubmit={(e) => handleOnSubmit(e)}
     >
       <TextField
         variant="outlined"
