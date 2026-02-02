@@ -48,12 +48,12 @@ const Header = () => {
   return (
     <Box
       component="header"
-      px={2.5}
+      px={{ xs: 2.5, sm: 5, md: 10 }}
       display={"flex"}
       justifyContent={"space-between"}
       alignItems={"center"}
       bgcolor={"#232321"}
-      sx={{ height: "8vh", flexShrink: 0 }}
+      sx={{ height: "72px", flexShrink: 0 }}
     >
       <Typography variant="h5" fontWeight={"bold"} color="#FAFAF9">
         Buddy Chat

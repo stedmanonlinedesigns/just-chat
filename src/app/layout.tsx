@@ -19,10 +19,15 @@ export default function RootLayout({
       <body>
         <Box
           sx={{
-            height: "100vh",
+            height: "100dvh",
             display: "flex",
             flexDirection: "column",
             overflow: "hidden",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
           }}
         >
           <Header />

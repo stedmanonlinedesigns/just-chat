@@ -42,9 +42,9 @@ const ChatroomDisplay = ({ messages }: ChatroomDisplayProps) => {
     <Box
       ref={containerRef}
       component={"ul"}
+      px={{ xs: 2.5, sm: 5, md: 10 }}
       sx={{
         pt: 2.5,
-        px: 2.5,
         display: "flex",
         flexDirection: "column",
         gap: 2,
