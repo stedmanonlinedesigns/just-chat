@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { getFirestore, collection, CollectionReference, getDocs as getDocsFirebase } from "firebase/firestore";
 
 export const app = initializeApp({
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -10,7 +11,27 @@ export const app = initializeApp({
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 })
 
+const firebaseDb = getFirestore(app)
+
+export const firebaseHelpers = {
+  getDb: () => firebaseDb,
+  getCollection: (collectionName: string) => {
+    return collection(firebaseDb, collectionName)
+  },
+  getDocs: async (collectionRef: CollectionReference) => {
+    try {
+      const snapshot = await getDocsFirebase(collectionRef)
+
+      return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+    } catch (error) {
+      console.error('Error getting documents:', error)
+      throw error
+    }
+  }
+}
+
 export const auth = getAuth(app)
 export const googleProvider = new GoogleAuthProvider()
 export const signinPopup = signInWithPopup
+export const firestore = getFirestore
 export const signout = signOut
