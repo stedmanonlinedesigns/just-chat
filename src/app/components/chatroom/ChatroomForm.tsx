@@ -22,17 +22,16 @@ const ChatroomForm = ({ value, onChange, onSubmit }: ChatroomFormProps) => {
   return (
     <Box
       component={"form"}
+      px={{ xs: 2.5, sm: 5, md: 10 }}
       sx={{
         pt: 3,
         pb: 3,
-        px: 2.5,
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
         background: "#1C1C1B",
         flexShrink: 0,
         minHeight: "80px",
-        // border: "2px solid orange",
       }}
       //TODO: Fix this
       onSubmit={(e) => handleOnSubmit(e)}

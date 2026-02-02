@@ -48,7 +48,7 @@ const Header = () => {
   return (
     <Box
       component="header"
-      px={2.5}
+      px={{ xs: 2.5, sm: 5, md: 10 }}
       display={"flex"}
       justifyContent={"space-between"}
       alignItems={"center"}
