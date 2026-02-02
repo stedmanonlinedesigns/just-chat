@@ -1,13 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
 import ChatroomMessage from "./ChatroomMessage";
-
-type Message = {
-  user_id: string;
-  created_at: string;
-  photoURL: string;
-  text: string;
-};
+import type { Message } from "@/app/types";
 
 export type ChatroomDisplayProps = {
   messages: Message[];
@@ -47,7 +41,7 @@ const ChatroomDisplay = ({ messages }: ChatroomDisplayProps) => {
         pt: 2.5,
         display: "flex",
         flexDirection: "column",
-        gap: 2,
+        gap: 2.5,
         flexGrow: 1,
         minHeight: 0,
         height: 0,
