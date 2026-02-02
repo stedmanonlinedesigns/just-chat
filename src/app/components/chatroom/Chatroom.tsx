@@ -17,7 +17,6 @@ import ChatroomDisplay from "./ChatroomDisplay";
 import ChatroomForm from "./ChatroomForm";
 
 const Chatroom = () => {
-  // const dummy = React.useRef(null);
   const [user] = useAuthState(auth);
   const db = getFirestore(app);
   const messagesCollection = collection(db, "messages");
@@ -29,7 +28,12 @@ const Chatroom = () => {
   // TODO: might could use zustand for this
   const [chatMessageValue, setChatMessageValue] = React.useState("");
 
-  if (!messages) return (<Box><Typography>There are no messagessssss.</Typography></Box>)
+  if (!messages)
+    return (
+      <Box>
+        <Typography>There are no messagessssss.</Typography>
+      </Box>
+    );
 
   const messagesList = messages?.map((message) => ({
     user_id: message.user_id,
@@ -38,10 +42,11 @@ const Chatroom = () => {
     text: message.text,
   }));
 
-  // TODO: fix this
-  // @ts-expect-error Parameter 'e' implicitly has an 'any' type.
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+    // TODO: Not sure how this is still working; might need to move it back to after the try/catch
+    setChatMessageValue("");
+
+    // TODO: probably could just await this instead of declaring a variable
     try {
       const docRef = await addDoc(messagesCollection, {
         created_at: serverTimestamp(),
@@ -49,9 +54,7 @@ const Chatroom = () => {
         user_id: user?.uid,
         text: chatMessageValue,
       });
-
-      console.log("Document written with:", docRef.id);
-      setChatMessageValue("");
+      console.log(`Document written with ID: ${docRef.id}`);
     } catch (error) {
       console.error("SOmething went wrong.", error);
     }
@@ -61,10 +64,13 @@ const Chatroom = () => {
   return (
     <Box
       component={"section"}
-      display={"flex"}
-      flexDirection={"column"}
       // bgcolor={'#FFF3E0'}
-      sx={{ minHeight: "90vh" }}
+      sx={{
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        overflow: "hidden",
+      }}
     >
       {loading ? (
         <Typography>Loading...</Typography>
@@ -77,7 +83,6 @@ const Chatroom = () => {
         // @ts-expect-error Type 'Dispatch<SetStateAction<string>>' is not assignable to type '() => void'
         onChange={setChatMessageValue}
         // TODO: Fix this
-        // @ts-expect-error Type '(e: any) => Promise<void>' is not assignable to type '() => Promise<void>
         onSubmit={handleSubmit}
       />
     </Box>

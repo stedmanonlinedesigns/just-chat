@@ -3,7 +3,15 @@ import { Chatroom } from "../components";
 
 const ChatroomPage = () => {
   return (
-    <Box component={"main"}>
+    <Box
+      component={"main"}
+      sx={{
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        overflow: "hidden",
+      }}
+    >
       <Chatroom />
     </Box>
   );
