@@ -42,11 +42,8 @@ const Chatroom = () => {
     text: message.text,
   }));
 
-  // TODO: fix this
-  // @ts-expect-error Parameter 'e' implicitly has an 'any' type.
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
+    // TODO: Not sure how this is still working; might need to move it back to after the try/catch
     setChatMessageValue("");
 
     // TODO: probably could just await this instead of declaring a variable
@@ -57,7 +54,7 @@ const Chatroom = () => {
         user_id: user?.uid,
         text: chatMessageValue,
       });
-      console.log("Document written with:", docRef.id);
+      console.log(`Document written with ID: ${docRef.id}`);
     } catch (error) {
       console.error("SOmething went wrong.", error);
     }
@@ -67,10 +64,13 @@ const Chatroom = () => {
   return (
     <Box
       component={"section"}
-      display={"flex"}
-      flexDirection={"column"}
       // bgcolor={'#FFF3E0'}
-      sx={{ height: "100%", overflow: "hidden" }}
+      sx={{
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        overflow: "hidden",
+      }}
     >
       {loading ? (
         <Typography>Loading...</Typography>
@@ -83,7 +83,6 @@ const Chatroom = () => {
         // @ts-expect-error Type 'Dispatch<SetStateAction<string>>' is not assignable to type '() => void'
         onChange={setChatMessageValue}
         // TODO: Fix this
-        // @ts-expect-error Type '(e: any) => Promise<void>' is not assignable to type '() => Promise<void>
         onSubmit={handleSubmit}
       />
     </Box>
