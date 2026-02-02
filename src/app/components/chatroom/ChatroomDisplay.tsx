@@ -3,16 +3,6 @@ import { Box } from "@mui/material";
 import ChatroomMessage from "./ChatroomMessage";
 import type { Message } from "@/app/types";
 
-// type Message = {
-//   user_id: string;
-//   created_at: {
-//     seconds: number;
-//     nanoseconds: number;
-//   } | null;
-//   photoURL: string;
-//   text: string;
-// };
-
 export type ChatroomDisplayProps = {
   messages: Message[];
 };
